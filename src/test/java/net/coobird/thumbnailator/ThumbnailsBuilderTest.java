@@ -1,7 +1,6 @@
 package net.coobird.thumbnailator;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.awt.Color;

@@ -18,9 +18,6 @@ import net.coobird.thumbnailator.test.BufferedImageComparer;
 
 import org.junit.Test;
 
-import static org.mockito.Matchers.anyFloat;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.*;
@@ -276,7 +273,7 @@ public class OutputStreamImageSinkTest
 		when(spi.getFormatNames()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.getFileSuffixes()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.createWriterInstance()).thenReturn(writer);
-		when(spi.createWriterInstance(anyObject())).thenReturn(writer);
+		when(spi.createWriterInstance(any())).thenReturn(writer);
 		IIORegistry.getDefaultInstance().registerServiceProvider(spi);
 		
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -326,7 +323,7 @@ public class OutputStreamImageSinkTest
 		when(spi.getFormatNames()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.getFileSuffixes()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.createWriterInstance()).thenReturn(writer);
-		when(spi.createWriterInstance(anyObject())).thenReturn(writer);
+		when(spi.createWriterInstance(any())).thenReturn(writer);
 		IIORegistry.getDefaultInstance().registerServiceProvider(spi);
 		
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -375,7 +372,7 @@ public class OutputStreamImageSinkTest
 		when(spi.getFormatNames()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.getFileSuffixes()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.createWriterInstance()).thenReturn(writer);
-		when(spi.createWriterInstance(anyObject())).thenReturn(writer);
+		when(spi.createWriterInstance(any())).thenReturn(writer);
 		IIORegistry.getDefaultInstance().registerServiceProvider(spi);
 		
 		ByteArrayOutputStream os = new ByteArrayOutputStream();

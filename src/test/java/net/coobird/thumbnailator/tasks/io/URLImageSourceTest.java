@@ -20,6 +20,7 @@ import net.coobird.thumbnailator.geometry.Region;
 import net.coobird.thumbnailator.test.BufferedImageAssert;
 import net.coobird.thumbnailator.test.BufferedImageComparer;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class URLImageSourceTest
@@ -169,7 +170,7 @@ public class URLImageSourceTest
 		catch (IOException e)
 		{
 			// then
-			assertThat(e.getMessage(), containsString("Could not open connection to URL:"));
+			assertThat(e.getMessage(), CoreMatchers.containsString("Could not open connection to URL:"));
 			throw e;
 		}
 		fail();

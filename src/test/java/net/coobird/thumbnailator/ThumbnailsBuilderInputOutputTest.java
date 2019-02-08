@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -3301,12 +3302,12 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_toFile() throws IOException
 	{
 		// given
-		URL f = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		File outFile = new File("src/test/resources/Thumbnailator/grid.tmp.png");
 		outFile.deleteOnExit();
 		
 		// when
-		Thumbnails.of(f)
+		Thumbnails.of(f.toURL())
 			.size(50, 50)
 			.toFile(outFile);
 	
@@ -3332,14 +3333,14 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_toFiles_Rename() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		File outFile1 = new File("src/test/resources/Thumbnailator/thumbnail.grid.png");
 		outFile1.deleteOnExit();
 		
 		try
 		{
 			// when
-			Thumbnails.of(f1)
+			Thumbnails.of(f1.toURL())
 				.size(50, 50)
 				.toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		}
@@ -3367,14 +3368,14 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_asFiles_Rename() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		File outFile1 = new File("src/test/resources/Thumbnailator/thumbnail.grid.png");
 		outFile1.deleteOnExit();
 		
 		try
 		{
 			// when
-			Thumbnails.of(f1)
+			Thumbnails.of(f1.toURL())
 				.size(50, 50)
 				.asFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		}
@@ -3403,10 +3404,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_toFiles_Iterable() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		Thumbnails.of(f1)
+		Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.toFiles(new ConsecutivelyNumberedFilenames(new File("src/test/resources/Thumbnailator"), "temp-%d.png"));
 		
@@ -3436,10 +3437,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_asFiles_Iterable() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		List<File> thumbnails = Thumbnails.of(f1)
+		List<File> thumbnails = Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.asFiles(new ConsecutivelyNumberedFilenames(new File("src/test/resources/Thumbnailator"), "temp-%d.png"));
 		
@@ -3470,10 +3471,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_asBufferedImage() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		BufferedImage thumbnail = Thumbnails.of(f1)
+		BufferedImage thumbnail = Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.asBufferedImage();
 		
@@ -3498,10 +3499,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_asBufferedImages() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		List<BufferedImage> thumbnails = Thumbnails.of(f1)
+		List<BufferedImage> thumbnails = Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.asBufferedImages();
 		
@@ -3529,11 +3530,11 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_toOutputStream() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		
 		// when
-		Thumbnails.of(f1)
+		Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.toOutputStream(os);
 			
@@ -3560,11 +3561,11 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_toOutputStreams() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		
 		// when
-		Thumbnails.of(f1)
+		Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.toOutputStreams(Arrays.asList(os));
 		
@@ -3591,10 +3592,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URL_iterableBufferedImages() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		Iterable<BufferedImage> thumbnails = Thumbnails.of(f1)
+		Iterable<BufferedImage> thumbnails = Thumbnails.of(f1.toURL())
 			.size(50, 50)
 			.iterableBufferedImages();
 		
@@ -3624,14 +3625,14 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_toFile() throws IOException
 	{
 		// given
-		URL f = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		File outFile = new File("src/test/resources/Thumbnailator/grid.tmp.png");
 		outFile.deleteOnExit();
 		
 		try
 		{
 			// when
-			Thumbnails.of(f, f)
+			Thumbnails.of(f.toURL(), f.toURL())
 				.size(50, 50)
 				.toFile(outFile);
 		}
@@ -3659,13 +3660,13 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_toFiles_Rename() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
-		URL f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
+		URI f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURI();
 	
 		try
 		{
 			// when
-			Thumbnails.of(f1, f2)
+			Thumbnails.of(f1.toURL(), f2.toURL())
 				.size(50, 50)
 				.toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		}
@@ -3693,13 +3694,13 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_asFiles_Rename() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
-		URL f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
+		URI f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURI();
 		
 		try
 		{
 			// when
-			Thumbnails.of(f1, f2)
+			Thumbnails.of(f1.toURL(), f2.toURL())
 				.size(50, 50)
 				.asFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		}
@@ -3728,11 +3729,11 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_toFiles_Iterable() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
-		URL f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
+		URI f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURI();
 	
 		// when
-		Thumbnails.of(f1, f2)
+		Thumbnails.of(f1.toURL(), f2.toURL())
 			.size(50, 50)
 			.toFiles(new ConsecutivelyNumberedFilenames(new File("src/test/resources/Thumbnailator"), "temp-%d.png"));
 		
@@ -3768,11 +3769,11 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_asFiles_Iterable() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
-		URL f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
+		URI f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURI();
 	
 		// when
-		List<File> thumbnails = Thumbnails.of(f1, f2)
+		List<File> thumbnails = Thumbnails.of(f1.toURL(), f2.toURL())
 			.size(50, 50)
 			.asFiles(new ConsecutivelyNumberedFilenames(new File("src/test/resources/Thumbnailator"), "temp-%d.png"));
 		
@@ -3808,12 +3809,12 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_asBufferedImage() throws IOException
 	{
 		// given
-		URL f = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		try
 		{
 			// when
-			Thumbnails.of(f, f)
+			Thumbnails.of(f.toURL(), f.toURL())
 				.size(50, 50)
 				.asBufferedImage();
 		}
@@ -3841,11 +3842,11 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_asBufferedImages() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
-		URL f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
+		URI f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURI();
 		
 		// when
-		List<BufferedImage> thumbnails = Thumbnails.of(f1, f2)
+		List<BufferedImage> thumbnails = Thumbnails.of(f1.toURL(), f2.toURL())
 			.size(50, 50)
 			.asBufferedImages();
 		
@@ -3877,13 +3878,13 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_toOutputStream() throws IOException
 	{
 		// given
-		URL f = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		OutputStream os = mock(OutputStream.class);
 		
 		try
 		{
 			// when
-			Thumbnails.of(f, f)
+			Thumbnails.of(f.toURL(), f.toURL())
 				.size(50, 50)
 				.toOutputStream(os);
 		}
@@ -3912,12 +3913,12 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_toOutputStreams() throws IOException
 	{
 		// given
-		URL f = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI f = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		ByteArrayOutputStream os1 = new ByteArrayOutputStream();
 		ByteArrayOutputStream os2 = new ByteArrayOutputStream();
 		
 		// when
-		Thumbnails.of(f, f)
+		Thumbnails.of(f.toURL(), f.toURL())
 			.size(50, 50)
 			.toOutputStreams(Arrays.asList(os1, os2));
 		
@@ -3950,11 +3951,11 @@ public class ThumbnailsBuilderInputOutputTest
 	public void of_URLs_iterableBufferedImages() throws IOException
 	{
 		// given
-		URL f1 = new File("src/test/resources/Thumbnailator/grid.png").toURL();
-		URL f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURL();
+		URI f1 = new File("src/test/resources/Thumbnailator/grid.png").toURI();
+		URI f2 = new File("src/test/resources/Thumbnailator/grid.jpg").toURI();
 		
 		// when
-		Iterable<BufferedImage> thumbnails = Thumbnails.of(f1, f2)
+		Iterable<BufferedImage> thumbnails = Thumbnails.of(f1.toURL(), f2.toURL())
 			.size(50, 50)
 			.iterableBufferedImages();
 		
@@ -3987,10 +3988,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLs_Single_asBufferedImage() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		BufferedImage thumbnail = Thumbnails.fromURLs(Arrays.asList(url))
+		BufferedImage thumbnail = Thumbnails.fromURLs(Arrays.asList(uri.toURL()))
 			.size(100, 100)
 			.asBufferedImage();
 		
@@ -4014,12 +4015,12 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLs_Multiple_asBufferedImage() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		try
 		{
 			// when
-			Thumbnails.fromURLs(Arrays.asList(url, url))
+			Thumbnails.fromURLs(Arrays.asList(uri.toURL(), uri.toURL()))
 				.size(100, 100)
 				.asBufferedImage();
 		}
@@ -4046,10 +4047,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLs_Single_asBufferedImages() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		List<BufferedImage> thumbnails = Thumbnails.fromURLs(Arrays.asList(url))
+		List<BufferedImage> thumbnails = Thumbnails.fromURLs(Arrays.asList(uri.toURL()))
 			.size(100, 100)
 			.asBufferedImages();
 		
@@ -4075,10 +4076,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLs_Multiple_asBufferedImages() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		List<BufferedImage> thumbnails = Thumbnails.fromURLs(Arrays.asList(url, url))
+		List<BufferedImage> thumbnails = Thumbnails.fromURLs(Arrays.asList(uri.toURL(), uri.toURL()))
 			.size(100, 100)
 			.asBufferedImages();
 		
@@ -4106,10 +4107,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLsIterable_Single_asBufferedImage() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		BufferedImage thumbnail = Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(url))
+		BufferedImage thumbnail = Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(uri.toURL()))
 			.size(100, 100)
 			.asBufferedImage();
 		
@@ -4133,12 +4134,12 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLsIterable_Multiple_asBufferedImage() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		try
 		{
 			// when
-			Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(url, url))
+			Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(uri.toURL(), uri.toURL()))
 				.size(100, 100)
 				.asBufferedImage();
 		}
@@ -4165,10 +4166,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLsIterable_Single_asBufferedImages() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		List<BufferedImage> thumbnails = Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(url))
+		List<BufferedImage> thumbnails = Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(uri.toURL()))
 			.size(100, 100)
 			.asBufferedImages();
 		
@@ -4194,10 +4195,10 @@ public class ThumbnailsBuilderInputOutputTest
 	public void fromURLsIterable_Multiple_asBufferedImages() throws IOException
 	{
 		// given
-		URL url = new File("src/test/resources/Thumbnailator/grid.png").toURL();
+		URI uri = new File("src/test/resources/Thumbnailator/grid.png").toURI();
 		
 		// when
-		List<BufferedImage> thumbnails = Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(url, url))
+		List<BufferedImage> thumbnails = Thumbnails.fromURLs((Iterable<URL>)Arrays.asList(uri.toURL(), uri.toURL()))
 			.size(100, 100)
 			.asBufferedImages();
 		
@@ -9355,7 +9356,7 @@ public class ThumbnailsBuilderInputOutputTest
 		try
 		{
 			// when
-			Thumbnails.of(f1)
+			Thumbnails.of(f1.toURL())
 				.size(100, 100)
 				.toFiles(new File(targetDir), Rename.PREFIX_DOT_THUMBNAIL);
 			
@@ -9387,7 +9388,7 @@ public class ThumbnailsBuilderInputOutputTest
 		try
 		{
 			// when
-			Thumbnails.of(f1)
+			Thumbnails.of(f1.toURL())
 				.size(100, 100)
 				.toFiles(new File(targetDir), Rename.PREFIX_DOT_THUMBNAIL);
 			
@@ -9691,7 +9692,7 @@ public class ThumbnailsBuilderInputOutputTest
 		try
 		{
 			// when
-			Thumbnails.of(f1)
+			Thumbnails.of(f1.toURL())
 				.size(100, 100)
 				.asFiles(new File(targetDir), Rename.PREFIX_DOT_THUMBNAIL);
 			
@@ -9723,7 +9724,7 @@ public class ThumbnailsBuilderInputOutputTest
 		try
 		{
 			// when
-			Thumbnails.of(f1)
+			Thumbnails.of(f1.toURL())
 				.size(100, 100)
 				.asFiles(new File(targetDir), Rename.PREFIX_DOT_THUMBNAIL);
 			

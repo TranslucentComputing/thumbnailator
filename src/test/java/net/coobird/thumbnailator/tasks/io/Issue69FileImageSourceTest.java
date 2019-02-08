@@ -62,10 +62,10 @@ public class Issue69FileImageSourceTest {
 	}
 	
 	@Test
-	public void fromFileBySizeWorkaroundEnabled() throws IOException {
+	public void fromFileBySizeWorkaroundEnabled() throws IOException, InterruptedException {
 		// given
 		System.setProperty("thumbnailator.conserveMemoryWorkaround", "true");
-		
+
 		ThumbnailParameter param = new ThumbnailParameterBuilder().size(200, 200).build();
 		FileImageSource source = new FileImageSource(tempFile);
 		source.setThumbnailParameter(param);
@@ -96,10 +96,10 @@ public class Issue69FileImageSourceTest {
 	}
 	
 	@Test
-	public void fromFileByScaleWorkaroundEnabled() throws IOException {
+	public void fromFileByScaleWorkaroundEnabled() throws IOException, InterruptedException {
 		// given
 		System.setProperty("thumbnailator.conserveMemoryWorkaround", "true");
-		
+
 		ThumbnailParameter param = new ThumbnailParameterBuilder().scale(0.1).build();
 		FileImageSource source = new FileImageSource(tempFile);
 		source.setThumbnailParameter(param);

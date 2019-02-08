@@ -131,8 +131,7 @@ public class InputStreamImageSource extends AbstractImageSource<InputStream>
 		 */
 		if (param != null && 
 				"true".equals(System.getProperty("thumbnailator.conserveMemoryWorkaround")) &&
-				width > 1800 && height > 1800 &&
-				(width * height * 4 > Runtime.getRuntime().freeMemory() / 4)
+				width > 1800 && height > 1800
 		)
 		{
 			int subsampling = 1;

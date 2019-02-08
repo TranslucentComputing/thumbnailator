@@ -309,7 +309,7 @@ public class FileImageSinkTest
 		when(spi.getFormatNames()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.getFileSuffixes()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.createWriterInstance()).thenReturn(writer);
-		when(spi.createWriterInstance(anyObject())).thenReturn(writer);
+		when(spi.createWriterInstance(any())).thenReturn(writer);
 		IIORegistry.getDefaultInstance().registerServiceProvider(spi);
 		
 		File outputFile = new File(TMPDIR, "test.foo");
@@ -361,7 +361,7 @@ public class FileImageSinkTest
 		when(spi.getFormatNames()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.getFileSuffixes()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.createWriterInstance()).thenReturn(writer);
-		when(spi.createWriterInstance(anyObject())).thenReturn(writer);
+		when(spi.createWriterInstance(any())).thenReturn(writer);
 		IIORegistry.getDefaultInstance().registerServiceProvider(spi);
 		
 		File outputFile = new File(TMPDIR, "test.foo");
@@ -412,7 +412,7 @@ public class FileImageSinkTest
 		when(spi.getFormatNames()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.getFileSuffixes()).thenReturn(new String[] {"foo", "FOO"});
 		when(spi.createWriterInstance()).thenReturn(writer);
-		when(spi.createWriterInstance(anyObject())).thenReturn(writer);
+		when(spi.createWriterInstance(any())).thenReturn(writer);
 		IIORegistry.getDefaultInstance().registerServiceProvider(spi);
 		
 		File outputFile = new File(TMPDIR, "test.foo");

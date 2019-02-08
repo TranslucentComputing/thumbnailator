@@ -161,8 +161,7 @@ public class FileImageSource extends AbstractImageSource<File>
 		 */
 		if (param != null && 
 				"true".equals(System.getProperty("thumbnailator.conserveMemoryWorkaround")) &&
-				width > 1800 && height > 1800 &&
-				(width * height * 4 > Runtime.getRuntime().freeMemory() / 4)
+				width > 1800 && height > 1800
 		)
 		{
 			int subsampling = 1;
@@ -202,10 +201,9 @@ public class FileImageSource extends AbstractImageSource<File>
 					subsampling = 1;
 				}
 			}
-			
+
 			irParam.setSourceSubsampling(subsampling, subsampling, 0, 0);
 		}
-		
 		img = reader.read(FIRST_IMAGE_INDEX, irParam);
 		
 		/*

@@ -10,7 +10,6 @@ import net.coobird.thumbnailator.resizers.ResizerFactory;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 /**

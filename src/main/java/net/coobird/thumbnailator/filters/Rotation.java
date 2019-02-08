@@ -70,6 +70,7 @@ public class Rotation
 			{
 				int width = img.getWidth();
 				int height = img.getHeight();
+				int imageType = img.getType();
 				
 				BufferedImage newImage;
 				
@@ -98,7 +99,7 @@ public class Rotation
 				
 				int newWidth = (int)Math.round(maxX - minX);
 				int newHeight = (int)Math.round(maxY - minY);
-				newImage = new BufferedImageBuilder(newWidth, newHeight).build();
+				newImage = new BufferedImageBuilder(newWidth, newHeight, imageType).build();
 				
 				Graphics2D g = newImage.createGraphics();
 				

@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
@@ -96,6 +95,9 @@ public class PipelineTest
 		BufferedImage img = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
 		
 		ImageFilter filter1 = mock(ImageFilter.class);
+
+		when(filter1.apply(any(BufferedImage.class))).thenReturn(img);
+
 		ImageFilter filter2 = mock(ImageFilter.class);
 		
 		Pipeline pipeline = new Pipeline(filter1, filter2);
@@ -115,6 +117,9 @@ public class PipelineTest
 		BufferedImage img = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
 		
 		ImageFilter filter1 = mock(ImageFilter.class);
+
+		when(filter1.apply(any(BufferedImage.class))).thenReturn(img);
+
 		ImageFilter filter2 = mock(ImageFilter.class);
 		
 		Pipeline pipeline = new Pipeline(Arrays.asList(filter1, filter2));
@@ -134,6 +139,9 @@ public class PipelineTest
 		BufferedImage img = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
 		
 		ImageFilter filter1 = mock(ImageFilter.class);
+
+		when(filter1.apply(any(BufferedImage.class))).thenReturn(img);
+
 		ImageFilter filter2 = mock(ImageFilter.class);
 		
 		Pipeline pipeline = new Pipeline();
@@ -155,6 +163,9 @@ public class PipelineTest
 		BufferedImage img = new BufferedImage(200, 200, BufferedImage.TYPE_INT_ARGB);
 		
 		ImageFilter filter1 = mock(ImageFilter.class);
+
+		when(filter1.apply(any(BufferedImage.class))).thenReturn(img);
+
 		ImageFilter filter2 = mock(ImageFilter.class);
 		
 		Pipeline pipeline = new Pipeline();
